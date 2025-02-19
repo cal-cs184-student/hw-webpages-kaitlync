@@ -1,112 +1,743 @@
-<html>
-	<head>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-		<style>
-			h1 {
-				text-align: center;
-			}
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>COMPSCI 184 Homework 1 </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
 
-			.container {
-				margin: 0 auto;
-				padding: 60px 20%;
-			}
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 1200px;
+		color: rgb(55, 53, 47);
+	}
+}
 
-			figure {
-				text-align: center;
-			}
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
 
-			img {
-				display: inline-block;
-			}
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
 
-			body {
-				font-family: 'Inter', sans-serif;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-		<h1>CS184/284A Spring 2025 Homework 1 Write-Up</h1>
-		<div style="text-align: center;">Names: </div>
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
 
-		<br>
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
 
-		Link to webpage: (TODO) <a href="https://cs184.eecs.berkeley.edu/sp25">cs184.eecs.berkeley.edu/sp25</a>
-		
-		<br>
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
 
-		Link to GitHub repository: (TODO) <a href="https://cs184.eecs.berkeley.edu/sp25">cs184.eecs.berkeley.edu/sp25</a>
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
 
-		<figure>
-			<img src="lion.jpg" alt="Lion" style="width:50%"/>
-			<figcaption>You can add images with captions!</figcaption>
-		</figure>
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
 
-		<!--
-		We've already added one heading per task, to make your write-up as navigable when grading. Please fit your write-up within these sections!
-		-->
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
 
-		<h2>Overview</h2>
-		Give a high-level overview of what you implemented in this homework. Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
 
-		<h2>Task 1: Drawing Single-Color Triangles</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
 
-		<p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
-		<div style="display: flex; flex-direction: column; align-items: center;">
-			<table style="width: 100%; text-align: center; border-collapse: collapse;">
-			  <tr>
-				<td style="text-align: center;">
-				  <img src="lion.jpg" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-				<td style="text-align: center;">
-				  <img src="lion.jpg" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-			  </tr>
-			  <tr>
-				<td style="text-align: center;">
-				  <img src="lion.jpg" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-				<td style="text-align: center;">
-				  <img src="lion.jpg" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-			  </tr>
-			</table>
-		</div>
-		
-		<h2>Task 2: Antialiasing by Supersampling</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
 
-		<h2>Task 3: Transforms</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
 
-		<h2>Task 4: Barycentric coordinates</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+mark {
+	background-color: transparent;
+}
 
-		<h2>Task 5: "Pixel sampling" for texture mapping</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+.indented {
+	padding-left: 1.5em;
+}
 
-		<h2>Task 6: "Level Sampling" with mipmaps for texture mapping</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
 
-		<h2>(Optional) Task 7: Extra Credit - Draw Something Creative!</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+img {
+	max-width: 100%;
+}
 
-		<h2>Additional Notes (please remove)</h2>
-		<ul>
-			<li>You can also add code if you'd like as so: <code>code code code</code></li>
-			<li>If you'd like to add math equations, 
-				<ul>
-					<li>You can write inline equations like so: \( a^2 + b^2 = c^2 \)</li>
-					<li>You can write display equations like so: \[ a^2 + b^2 = c^2 \]</li>
-				</ul>
-			</li>
-		</ul>
-		</div>
-	</body>
-</html>
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="19cfb006-dea9-8056-9669-f1c2d0b5bfc8" class="page serif"><header><h1 class="page-title">COMPSCI 184 Homework 1 </h1><p class="page-description"></p></header><div class="page-body"><p id="19ffb006-dea9-8049-b277-d82c3d6665d5" class="">Link to webpage: <a href="https://cal-cs184-student.github.io/hw-webpages-kaitlync/hw1/index.html">https://cal-cs184-student.github.io/hw-webpages-kaitlync/hw1/index.html</a></p><p id="19ffb006-dea9-80e7-880a-d5f0a9f1b5f1" class="">Link to GitHub repository: <a href="https://github.com/cal-cs184-student/sp25-hw1-kc">https://github.com/cal-cs184-student/sp25-hw1-kc</a></p><h3 id="19cfb006-dea9-80f9-abe6-c53726b5f30a" class="">Kaitlyn Chen </h3><h2 id="19cfb006-dea9-8069-8700-eb09c9cbddcf" class="">Overview:</h2><p id="19cfb006-dea9-8003-a7a5-e0fa43357271" class="block-color-gray_background">In this assignment we will rasterize triangles with a variety of methods. We explore drawing single color triangles with a point in triangle test (three line test), then improve results and antialiasing with supersampling. We will also perform transformations and color interpolation with Barycentric coordinates. Then extend these ideas to texture sampling with pixel sampling (nearest neighbor sampling and bilinear sampling) and mipmapping. Overall I learned, when certain methods are better than others for antialiasing, as we will see comparing example images. Something interesting was learning how to implement these ideas in C++</p><h2 id="19cfb006-dea9-803b-8548-c614714d0698" class=""><strong>Task 1: Drawing Single-Color Triangles</strong></h2><div id="19dfb006-dea9-802e-b309-eee1de9f09a1" class="column-list"><div id="19dfb006-dea9-8013-9609-d232e634a989" style="width:56.25%" class="column"><p id="19cfb006-dea9-8009-8f2d-ccb3861233eb" class="block-color-gray_background">In this section I rasterized a triangle using a bounding box and the point- in-triangle test discussed in lecture (three line test).<br/><br/><strong>Algorithm:</strong> First I computed the bounding box of the triangle such that we aren’t sampling every pixel in the frame buffer. This is simply taking the minimum and maximum values of the x and y coordinates from the three vertices. Next I iterate through each pixel in the bounding box, sample the center point (x+05, y+0.5), and compute whether this point is inside or on the edge of the triangle. To do so I compute<br/> <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>i</mi></msub><mo>=</mo><mi>V</mi><mo>⋅</mo><mi>N</mi><mo>=</mo><mo stretchy="false">(</mo><mi>P</mi><mo>−</mo><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>⋅</mo><mi>P</mi><mi>e</mi><mi>r</mi><mi>p</mi><mo stretchy="false">(</mo><msub><mi>P</mi><mi>i</mi></msub><mo>−</mo><msub><mi>P</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mo stretchy="false">(</mo><msub><mi>p</mi><mi>x</mi></msub><mo>−</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msub><mi>y</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><msub><mi>p</mi><mi>y</mi></msub><mo>−</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">L_i = V \cdot N = (P - P_i) \cdot Perp(P_i - P_{i+1})  = -(p_x - x_i)(y_{i+1} - y_i) + (p_y - y_i)(x_{i+1} - x_i),</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mpunct">,</span></span></span></span></span><span>﻿</span></span>  for  <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>∈</mo><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex"> i \in (0,1,2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6986em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>.<br/>A triangle is the intersection of three half planes, therefore a point is inside a triangle if <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>L</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>L</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">L_0, L_1, L_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> are either all positive or all negative (this ensures this test works regardless of the winding order of the vertices) . This implementation assumes that a sample on the boundary of the triangle is to be draw, <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L_i = 0 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span><span>﻿</span></span>. If this three line test passes we simply call the prewritten function fill_pixel(x, y, color). </p></div><div id="19dfb006-dea9-808b-bc64-c284330d4199" style="width:43.74999999999997%" class="column"><figure id="19dfb006-dea9-80ac-b295-cb7e45ab70c6" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_5.06.58_PM.png"><img style="width:542.7083740234375px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_5.06.58_PM.png"/></a><figcaption>taken from cs184 lecture</figcaption></figure><p id="19dfb006-dea9-8042-8fbe-f26ae01c9476" class="">
+</p></div></div><p id="19dfb006-dea9-8064-be6f-f3abd0f1296d" class="block-color-gray_background">This algorithm is no worse than one that checks every sample in the triangle’s bounding box because it only iterates over pixels within the triangles bounding box, as stated above. This bounding box is the tightest rectangle that contains the whole triangle. Any pixel outside this rectangle will not be tested since it is guaranteed that it will not be in the triangle. Doing this makes the algorithm efficient. </p><p id="19dfb006-dea9-80b8-96f6-dd85708c18cf" class="">Example test images: </p><div id="19dfb006-dea9-8045-a170-d1ea9312eb17" class="column-list"><div id="19dfb006-dea9-8000-b872-ce3ffc32e619" style="width:20.000000000000004%" class="column"><figure id="19dfb006-dea9-8067-be25-f6eba77cf3e7" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_5.32.19_PM.png"><img style="width:382.6562805175781px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_5.32.19_PM.png"/></a><figcaption>basic/test4.svg</figcaption></figure></div><div id="19dfb006-dea9-8041-a588-e547d7a1bc7e" style="width:20%" class="column"><figure id="19dfb006-dea9-8085-a7a2-d9a610418a98" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_7.39.09_PM.png"><img style="width:275.4861145019531px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_7.39.09_PM.png"/></a><figcaption>jaggies when inspecting pixels for basic/test4.svg</figcaption></figure><p id="19dfb006-dea9-809b-832d-c4d01ad24af7" class="">
+</p></div><div id="19dfb006-dea9-8012-a450-d5b293cf4b9a" style="width:20.000000000000004%" class="column"><figure id="19dfb006-dea9-8073-a170-fc7196862c73" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_4.00.45_PM.png"><img style="width:1241.979248046875px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_4.00.45_PM.png"/></a><figcaption>basic/test3.svg</figcaption></figure><p id="19dfb006-dea9-807b-a0a3-cfca142acc4a" class="">
+</p><p id="19dfb006-dea9-80e8-bdf4-e4816a386650" class="">
+</p></div><div id="19dfb006-dea9-80af-9cea-ee787293ed68" style="width:20%" class="column"><figure id="19dfb006-dea9-80ea-903b-e8b19babd8e6" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_4.02.49_PM.png"><img style="width:382.6562805175781px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_4.02.49_PM.png"/></a><figcaption>basic/test6.svg NOT robust to winding order of vertices </figcaption></figure><p id="19dfb006-dea9-800a-b693-dd1264a6cf58" class="">
+</p></div><div id="19dfb006-dea9-8001-af95-f6f0b4c10705" style="width:20.00000000000001%" class="column"><figure id="19dfb006-dea9-8068-9403-ca3df39a41c4" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_5.31.18_PM.png"><img style="width:596.9791870117188px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_5.31.18_PM.png"/></a><figcaption>basic/test6.svg robust to winding order of vertices </figcaption></figure><p id="19dfb006-dea9-800b-a639-d9a0254c7507" class="">
+</p></div></div><h2 id="19cfb006-dea9-80fe-941e-e1f4ea3beda5" class="">Task 2: <strong>Antialiasing by Supersampling</strong></h2><div id="19dfb006-dea9-800e-bd94-d4094fd70fa1" class="column-list"><div id="19dfb006-dea9-8027-b2cb-c16893a440a7" style="width:68.75%" class="column"><p id="19dfb006-dea9-80a5-b0a5-f14803046793" class="block-color-gray_background">In this section we aimed to antialias the same images from task 1 by implementing supersampling.  <br/><br/><strong>Antialiasing</strong> is the process of removing frequencies above the Nyquist before sampling. We can attenuate these frequencies with a 1 pixel box filter. Supersampling allows us to mimic and approximates the effect of a 1 pixel box filter by sampling multiple locations within a pixel and averaging their values, essentially antialiasing an image! <br/><br/><strong>Usefullness: </strong>Supersampling is useful since it reduces the effect of “jaggies” in areas of high contrast, such as edges. As we will see, supersampling gives a more accurate representation of the geometry of an image, producing smoother lines and transitions within an image.<br/>In this technique we essentially rasterize an image at a higher resolution then downsample to the output resolution of the frame buffer.  We first needed to allocate space for a sample buffer that is our “higher resolution” image. The dimensions of this sample buffer can we defined by the width and height of the frame buffer and a supersample rate: <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mtext>width</mtext><mo>∗</mo><msqrt><mtext>sample rate</mtext></msqrt><mo stretchy="false">)</mo><mtext> x </mtext><mo stretchy="false">(</mo><mtext>height</mtext><mo>∗</mo><msqrt><mtext>sample rate</mtext></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\text{width}*\sqrt{\text{sample rate}}) \ \text{x}\ (\text{height} * \sqrt{\text{sample rate}})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">width</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.085em;vertical-align:-0.25em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.835em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord text"><span class="mord">sample rate</span></span></span></span><span style="top:-2.795em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.205em;"><span></span></span></span></span></span><span class="mclose">)</span><span class="mspace"> </span><span class="mord text"><span class="mord">x</span></span><span class="mspace"> </span><span class="mopen">(</span><span class="mord text"><span class="mord">height</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.085em;vertical-align:-0.25em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.835em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord text"><span class="mord">sample rate</span></span></span></span><span style="top:-2.795em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.205em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span><br/>We assume the supersample rate is a perfect square. Each subsample point of this sample buffer has a color value.<br/></p></div><div id="19dfb006-dea9-802d-870d-f836b8f0a532" style="width:31.250000000000007%" class="column"><figure id="19dfb006-dea9-801b-99cc-c9c365def222" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_8.59.18_PM.png"><img style="width:596.9791870117188px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-16_at_8.59.18_PM.png"/></a><figcaption>visual of supersampling with sample size 4 - taken from homework 1 spec</figcaption></figure></div></div><p id="19dfb006-dea9-80fd-b27a-db860de50ea3" class="block-color-gray_background"><strong>Supersampling algorithm: </strong>We first compute the bounding box of the triangle ( as before). For each pixel in this box, we subdivide the pixel into sample rate number of pixels, so a pixel has grid size: <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msqrt><mtext>sample rate</mtext></msqrt><mtext> x</mtext><msqrt><mtext>sample rate</mtext></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\sqrt{\text{sample rate}} \ \text{x} \sqrt{\text{sample rate}})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.085em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.835em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord text"><span class="mord">sample rate</span></span></span></span><span style="top:-2.795em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.205em;"><span></span></span></span></span></span><span class="mspace"> </span><span class="mord text"><span class="mord">x</span></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.835em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord text"><span class="mord">sample rate</span></span></span></span><span style="top:-2.795em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.205em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span><br/>At each subsample point (positioned at the center of the subcell), we perform the three line test (discussed in task 1) to determine if the point is located inside the triangle. Once all subsample points of a pixel is tested, we “resolve” the supersample buffer by averaging the subsamples to compute the final pixel output. This averaging smooths the colors on the edges of the triangle, reducing “jaggies”. <br/>Database: includes a sample buffer which is a vector of Color objects and has size frame buffer width * frame buffer height * sample rate <br/><br/><strong>Modifications to the Rasterization Pipeline:</strong> <br/>I modified the<br/><strong> fill_pixel </strong>function such that for points and lines (which are not supersampled, like the black rectangular boarder of the images) are still drawn to the supersample buffer. We do this by simply filling every subsample within a pixel with the same color in the sample buffer such that in the output frame buffer it seems like a single sampled pixel.<br/>I modified the<br/><strong> rasterize_triangle</strong> function according to the algorithm I outlined above. <br/>I modified the <br/><strong>resolve_to_framebuffer</strong> function to average the subsamples for each output pixel after all pixels had been supersampled and rasterized. This average is converted an 8-bit color value and written to the final RGB framebuffer. This function is the last step in rendering a frame <br/>I modified the functions<br/><strong> set_sample_rate</strong> and <strong>set_framebuffer_target </strong> to correctly allocate and resize the sample buffer based on the sample rate: <br/><br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mi>i</mi><mi>d</mi><mi>t</mi><mi>h</mi><mo>∗</mo><mi>h</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mo>∗</mo><mi>s</mi><mi>a</mi><mi>m</mi><mi>p</mi><mi>l</mi><mi>e</mi><mtext> </mtext><mi>r</mi><mi>a</mi><mi>t</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">width * height* sample\ rate</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">am</span><span class="mord mathnormal" style="margin-right:0.01968em;">pl</span><span class="mord mathnormal">e</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span></span></span></span></span><span>﻿</span></span></p><div id="19dfb006-dea9-8096-9505-d9f24f9058db" class="column-list"><div id="19dfb006-dea9-802b-b01a-f9eb3105cbca" style="width:34.375%" class="column"><p id="19dfb006-dea9-805f-a9db-fedfc4528597" class="block-color-gray_background">basic/test4.svg with the default viewing parameters and sample rates 1, 4, 9, and 16:<br/><br/>We can see that as the sample rates increases, the “jaggies” effect decreases, creating smoother edges.<br/><br/><strong>Explanation of results: <br/><br/></strong>With a sample rate of one pixel, each pixel is processed as a whole, single point, so edge locations that fall between pixels have rough and distinct transitions. With a sample rate of 4 we see a smoother transition on edge locations since locations that run through pixels are averaged. Multiple subsamples within a pixel allows us to account for partial coverage on the edges. Downsampling allows us to create intermediate colors between the two sides of an edge. An even larger sample rate of 16 allows for even more refined transitions and intermediate colors. This antialiasing gives us a much more accurate representation of the image’s geometry. </p></div><div id="19dfb006-dea9-80c5-bc1f-ff37809d6637" style="width:21.875%" class="column"><figure id="19dfb006-dea9-8023-b2a5-e81d64b7c3fe" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/44409fab-fe33-4de5-b50b-8fa073cf1420.png"><img style="width:245.39682539682542px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/44409fab-fe33-4de5-b50b-8fa073cf1420.png"/></a></figure><figure id="19dfb006-dea9-801c-a971-f8c2b43ce634" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/dfb9df57-e567-4fe0-af7a-b4cf5db803b6.png"><img style="width:319.3319415448852px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/dfb9df57-e567-4fe0-af7a-b4cf5db803b6.png"/></a><figcaption>supersample rate = 1 per pixel</figcaption></figure></div><div id="19dfb006-dea9-80c4-b95c-db7a90738f71" style="width:21.875%" class="column"><figure id="19dfb006-dea9-8020-8798-d16004605758" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/55d008dc-df17-4dfa-bddd-88e981c83bff.png"><img style="width:245.6916996047431px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/55d008dc-df17-4dfa-bddd-88e981c83bff.png"/></a></figure><figure id="19dfb006-dea9-8038-91aa-e957a1a7de68" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/2fdc8587-be08-4893-8e88-cd9dca308031.png"><img style="width:318.6694386694387px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/2fdc8587-be08-4893-8e88-cd9dca308031.png"/></a><figcaption>supersample rate = 4 per pixel</figcaption></figure></div><div id="19dfb006-dea9-80ef-83cb-e9678c7279d9" style="width:21.875%" class="column"><figure id="19dfb006-dea9-8058-9c57-dc995c3b3c72" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/8715103d-e1ac-4f07-8104-fb281fe561d9.png"><img style="width:245.86138613861385px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/8715103d-e1ac-4f07-8104-fb281fe561d9.png"/></a></figure><figure id="19dfb006-dea9-809b-b553-c223667f2a75" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/3505dc84-edbf-4788-8595-bb9c3334c1ea.png"><img style="width:320.6694560669456px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/3505dc84-edbf-4788-8595-bb9c3334c1ea.png"/></a><figcaption>supersample rate = 16 per pixel</figcaption></figure></div></div><h2 id="19cfb006-dea9-80ad-8c09-f88f2a7845e4" class=""><strong>Task 3: Transforms</strong></h2><div id="19dfb006-dea9-8094-8238-d3b52ad2ef48" class="column-list"><div id="19dfb006-dea9-801f-90b3-ec9a0144153e" style="width:81.25%" class="column"><p id="19cfb006-dea9-8061-94e5-d63361d44687" class="block-color-gray_background">In this task we implemented simple matrix transforms in homogeneous coordinates, including translate, scale, and rotate. I applied some transforms to cube man to make it look like he’s running by translating and rotating his limbs and head. </p><figure id="19ffb006-dea9-80c1-a972-c34d4e258eca" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-18_at_9.33.51_PM.png"><img style="width:1448px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-18_at_9.33.51_PM.png"/></a><figcaption>taken from cs184 lecture </figcaption></figure></div><div id="19dfb006-dea9-805a-b44f-e7c91b637379" style="width:18.749999999999996%" class="column"><figure id="19dfb006-dea9-8088-ba39-d4cab9e509d4" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_12.32.35_AM.png"><img style="width:288px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_12.32.35_AM.png"/></a><figcaption>svg/transforms/robot.svg</figcaption></figure></div></div><h2 id="19cfb006-dea9-808b-bf39-ee7771b935ce" class=""><strong>Task 4: Barycentric coordinates</strong></h2><div id="19dfb006-dea9-808b-a4e2-d3ab492ed979" class="column-list"><div id="19dfb006-dea9-8024-ae6f-c71c6781ac32" style="width:75%" class="column"><p id="19dfb006-dea9-8016-ae09-f366fa20e66a" class="block-color-gray_background">Barycentric coordinates is a coordinate system in <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo separator="true">,</mo><mi>γ</mi></mrow><annotation encoding="application/x-tex">\alpha, \beta, \gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span></span></span><span>﻿</span></span> that gives us a way to represent any point within a triangle as a weighted sum of the three vertices: <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mi>α</mi><mi>A</mi><mo>+</mo><mi>β</mi><mi>B</mi><mo>+</mo><mi>γ</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">P = \alpha A + \beta B + \gamma C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">βB</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span><span>﻿</span></span> where <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>+</mo><mi>β</mi><mo>+</mo><mi>γ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha + \beta + \gamma = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span><span>﻿</span></span> and  <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo separator="true">,</mo><mi>γ</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\alpha, \beta, \gamma \in [0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></span><span>﻿</span></span> <br/>We can think of each weight as a measure of how close the point is to the corresponding vertex, where values closer to 1 indicate a point is closer to the vertex. For instance a if <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo separator="true">,</mo><mi>γ</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\alpha, \beta, \gamma) = (1, 0, 0) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> then the point lies on/is the A vertex itself.  <br/>Recall from task 1 that <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mrow><mi>P</mi><mi>Q</mi></mrow></msub><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mi>P</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msub><mi>y</mi><mi>Q</mi></msub><mo>−</mo><msub><mi>y</mi><mi>P</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><msub><mi>y</mi><mi>p</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>Q</mi></msub><mo>−</mo><msub><mi>x</mi><mi>P</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L_{PQ}(x, y) = -(x - x_P)(y_Q -y_P) + (y-y_p)(x_Q-x_P)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">PQ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">Q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">Q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> which is proportional to the distance from line PQ . Therefore we can calculate the weights as such:<br/><br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><msub><mi>L</mi><mrow><mi>B</mi><mi>C</mi></mrow></msub><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><msub><mi>L</mi><mrow><mi>B</mi><mi>C</mi></mrow></msub><mo stretchy="false">(</mo><msub><mi>x</mi><mi>A</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>A</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\alpha = L_{BC}(x,y)/L_{BC}(x_A,y_A)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">BC</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">BC</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> ,<br/> <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><msub><mi>L</mi><mrow><mi>C</mi><mi>A</mi></mrow></msub><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><msub><mi>L</mi><mrow><mi>C</mi><mi>A</mi></mrow></msub><mo stretchy="false">(</mo><msub><mi>x</mi><mi>B</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>B</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\beta = L_{CA}(x,y)/L_{CA}(x_B,y_B)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mathnormal mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mathnormal mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> ,<br/> <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo>−</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\gamma = 1 - \alpha -\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span></span><span>﻿</span></span><br/>(Below are two ways to visualize such geometry of barycentric coordinates)<br/>Barycentric coordinates are useful for interpolation of colors, texture coordinates, etc. For task 4 we interpolate colors such to create smoothly blended/varying colors across the surface.  Below is an example of interpolating a triangle with blue, red, and green vertices where <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mi>β</mi><mo>=</mo><mi>γ</mi><mo>=</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\alpha = \beta = \gamma = 1/3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/3</span></span></span></span></span><span>﻿</span></span>. Since the weight of each vertex is equal, we can see that each color has equal visability. We also see how the colors are blendeed smoothly between each other. The color circle to the right is a combination of many interpolated triangles similar to the one below. </p></div><div id="19dfb006-dea9-806f-92e5-f37b9d65d7dc" style="width:25%" class="column"><figure id="19ffb006-dea9-807b-8646-da2cb0f0b0cd" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/ce90779c-361a-44c1-8332-a56edfc2473f.png"><img style="width:336px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/ce90779c-361a-44c1-8332-a56edfc2473f.png"/></a><figcaption>svg/basic/test7.svg with default viewing parameters and sample rate 1</figcaption></figure><p id="19ffb006-dea9-8039-8c95-e2ce806bded1" class="">
+</p></div></div><div id="19dfb006-dea9-80c5-8205-db663776b358" class="column-list"><div id="e4d3dc0e-2397-49d6-b89f-67df4e673b6a" style="width:25%" class="column"><figure id="d9d01c5d-a337-41d2-8aed-83986cdbdd43" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-18_at_1.52.33_PM.png"><img style="width:336px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-18_at_1.52.33_PM.png"/></a><figcaption>svg/basic/test9.svg</figcaption></figure></div><div id="c98d8264-8ad4-47d7-9e34-546a499b5546" style="width:37.5%" class="column"><figure id="19dfb006-dea9-80b4-a670-fd420d6f8f48" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_12.19.07_PM.png"><img style="width:480px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_12.19.07_PM.png"/></a><figcaption>taken from cs184 lecture notes</figcaption></figure><p id="1d0428c7-5d5e-4c9a-87f6-0fdf7aa97da0" class="">
+</p></div><div id="19dfb006-dea9-8087-82e2-d7eab3dc4a4a" style="width:37.49999999999999%" class="column"><figure id="19dfb006-dea9-8035-b3fe-d3eb6b8266d0" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_12.18.01_PM.png"><img style="width:480px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_12.18.01_PM.png"/></a><figcaption>taken from cs 184 lecture notes</figcaption></figure><p id="81b6cb86-4b3b-488a-8fe8-6fe3393ba23d" class="">
+</p></div></div><h2 id="19cfb006-dea9-80cf-b816-f3282db9069b" class=""><strong>Task 5: “Pixel sampling” for texture mapping </strong></h2><div id="19efb006-dea9-8018-b01d-e3680e7516d1" class="column-list"><div id="19efb006-dea9-80f0-bb8c-cac02f6f8979" style="width:50%" class="column"><p id="19efb006-dea9-80c4-8c7b-da113a82d822" class="block-color-gray_background">Pixel sampling is the process of selecting pixels to represent an entire image. In texture mapping we use it to determine which texels from a texture image will be included in the final output pixel. This is necessary since a pixel’s texture coordinate doesn’t usually fall exactly on a single texel, so we must sample to estimate such value. In this task we explore 2 ways to sample such: nearest-neighbor sampling and bilinear sampling. Before sampling we first need to compute the continuous texture coordinates (u, v) from the interpolated barycentric coordinates for each. Also note that each pixel sampled is actually a subsample produced from supersampling if the supersample rate is greater than 1.<br/><br/><br/><strong>Nearest-Neighbor Sampling:</strong> this method simply finds the nearest integer  texel coordinate to the continuous (u,v) coordinate and returns the color of such nearest texel coordinate. To implement this we simply round the (u, v) coordinate. This method is fast/efficient, however it creates aliased and blocky results since neighboring pixel colors are not considered. We can see this happening in the results on the right, where features, like grid lines, are actually missing and broken. <br/><br/><br/><strong>Bilinear Sampling:</strong> this method takes the 4 nearest pixels to (u,v) instead and takes a weighted average of them based on proximity to (u, v) to effectively blend their colors. This method is slower than nearest but produces smoother, more accurate images and reduces aliasing. </p><figure id="19ffb006-dea9-80ba-8a10-d51fb77bfc30" class="image" style="text-align:center"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/aef8d612-e046-4aa1-9b3c-a30a3d1a8ecc.png"><img style="width:336px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/aef8d612-e046-4aa1-9b3c-a30a3d1a8ecc.png"/></a><figcaption>visual of bilinear sampling</figcaption></figure><p id="19ffb006-dea9-800b-848b-d19096c04eaa" class="block-color-gray_background">Zooming into the grid lines on the globe of test2.svg, using the pixel inspector, we can see how bilinear sampling clearly defeats nearest sampling. A large difference is particularly noticeable at edges with high contrast in colors, like gridlines that are thin and have distinct colors to the blue and green colors of the world map. We can see that the grid lines are broken and fragmented when using nearest sampling, but more connected when using bilinear sampling. Overall we can expect results from nearest sampling to be blocky and pixelated, while bilinear producing smoother results. However as the supersampling rate increases, bilinear sampling becomes prone to blurring. </p></div><div id="19efb006-dea9-805d-aec5-eed589f29212" style="width:24.999999999999993%" class="column"><figure id="19efb006-dea9-8054-9816-f45850ab0812" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/617a6913-0453-4c2a-bc58-8d41207fabe7.png"><img style="width:359.2624113475177px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/617a6913-0453-4c2a-bc58-8d41207fabe7.png"/></a><figcaption>/svg/texmap/test2.svg nearest sampling, supersample rate = 1 pixel<br/><br/></figcaption></figure><figure id="19efb006-dea9-807d-a541-f6a28cc3c6e9" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_5.40.12_PM.png"><img style="width:1241.9879150390625px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_5.40.12_PM.png"/></a><figcaption>/svg/texmap/test1.svg nearest pixel sampling, supersample rate = 1 per pixel</figcaption></figure><figure id="19efb006-dea9-80e0-a09c-ec7a9ff58f50" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_5.41.01_PM.png"><img style="width:596.9878540039062px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_5.41.01_PM.png"/></a><figcaption>/svg/texmap/test1.svg bilinear pixel interpolation sampling, supersample rate = 1 per pixel</figcaption></figure><p id="19ffb006-dea9-80b6-8f51-eedbebf55581" class="">
+</p></div><div id="19efb006-dea9-8051-986e-ea493d50ae9b" style="width:25%" class="column"><figure id="19efb006-dea9-8099-b540-edd28beb0b79" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/928aaa29-5b6c-4424-bd38-ecb68eb02d29.png"><img style="width:364.95677233429393px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/928aaa29-5b6c-4424-bd38-ecb68eb02d29.png"/></a><figcaption>/svg/texmap/test2.svg bilinear pixel interpolation sampling, supersample rate = 1 per pixel</figcaption></figure><figure id="19efb006-dea9-8065-ba18-de5338d0afd4" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_5.40.30_PM.png"><img style="width:596.9878540039062px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_5.40.30_PM.png"/></a><figcaption>/svg/texmap/test1.svg nearest pixel sampling, supersample rate = 16 per pixel</figcaption></figure><figure id="19efb006-dea9-806b-89e1-c986c8093745" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_5.41.19_PM.png"><img style="width:596.9878540039062px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/Screen_Shot_2025-02-17_at_5.41.19_PM.png"/></a><figcaption>/svg/texmap/test1.svg bilinear pixel interpolation sampling, supersample rate = 16 per pixel</figcaption></figure></div></div><h2 id="19cfb006-dea9-8060-9686-d65d0af925ce" class=""><strong>Task 6: “Level sampling” with mipmaps for texture mapping</strong></h2><div id="19ffb006-dea9-8089-a19b-c65d1a553b17" class="column-list"><div id="19ffb006-dea9-8015-b16c-f13601100240" style="width:33.33333333333333%" class="column"><p id="19ffb006-dea9-8083-9a76-c7c70fe7b6d4" class="block-color-gray_background">Level sampling is choosing a resolution/mipmap level of a texture to sample when mapping it to a surface. The idea behind this is because textures are stored at multiple resolutions in a pyramid structure.We select a level that matches the screen size of the texture best. Level sampling allows us to minimize aliasing and increase rendering efficiency since certain details that will not be seen from a distance are negated. <br/><br/><br/><strong>Implementation: </strong>for each subsample I first computed the (u,v) cotinuous texture coordinates using baycentric interpolation. Then I estimated how quickly these uv coordinates change to screen space by calculating the difference vectors in u and v directions. To do so we compare uv at (x,y) with uv at (x+1, y) and (x, y+1). We then need to scale these by the mipmap width and height to get the full resolution texture size. We then use these values to calculate the maximum derivative and take <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">log_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> of such to calculate the continuous mipmap level.  We also implemented 3 level sampling methods: <br/><br/><strong>Zero level sampling: </strong>sampling from the 0th mipmap level (as in task 5) <br/><br/><strong>Nearest level sampling: </strong>taking the nearest appropriate mipmap level and passing that level as a parameter to the nearest or bilinear sample function<br/><br/><strong>Bilinear level sampling: </strong>computing a weighted average of the 2 adjacent mipmap levels. when we use this with bilinear pixel sampling we call it trilinear filtering</p></div><div id="19ffb006-dea9-807e-b48b-e4c7e448e48f" style="width:33.33333333333333%" class="column"><p id="19ffb006-dea9-809f-af0c-f0088a22b400" class="">
+</p><figure id="19ffb006-dea9-809a-b936-d4f52872bf12" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/2d560efd-e4ef-4bbb-bfd1-8d95d51b1d53.png"><img style="width:354.7118644067797px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/2d560efd-e4ef-4bbb-bfd1-8d95d51b1d53.png"/></a><figcaption>level zero, nearest pixel sampling, supersample rate = 1 per pixel </figcaption></figure><figure id="19ffb006-dea9-8044-856c-ce11df2f4282" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/de729aa9-c9b7-4f04-8fec-c88356837599.png"><img style="width:357.50213857998284px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/de729aa9-c9b7-4f04-8fec-c88356837599.png"/></a><figcaption>nearest level, nearest pixel sampling, supersample rate = 1 per pixel</figcaption></figure></div><div id="19ffb006-dea9-8029-a9c9-f0996207ed42" style="width:33.33333333333334%" class="column"><p id="19ffb006-dea9-8059-8a41-f579f61df6c5" class="">
+</p><figure id="19ffb006-dea9-80a1-9bc0-e0a45d9acdd5" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/02b5840c-d137-405a-b148-e7092aa73c01.png"><img style="width:356.46258503401367px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/02b5840c-d137-405a-b148-e7092aa73c01.png"/></a><figcaption>level zero, bilinear pixel interpolation, supersampling rate = 1 per pixel</figcaption></figure><figure id="19ffb006-dea9-80af-8560-fd16e38b6670" class="image"><a href="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/28b2a0fc-898e-4a8d-b2a5-bbd532ed4da1.png"><img style="width:353.86960203217615px" src="COMPSCI%20184%20Homework%201%2019cfb006dea980569669f1c2d0b5bfc8/28b2a0fc-898e-4a8d-b2a5-bbd532ed4da1.png"/></a><figcaption>nearest level, bilinear pixel interpolation sampling, supersample rate = 1 per pixel</figcaption></figure><p id="19ffb006-dea9-8095-b0f6-faf7516b4770" class="">
+</p></div></div><p id="19ffb006-dea9-8083-bb78-f5d79a1b0b6c" class="block-color-gray_background">We have now implemented 3 sampling techniques:  pixel sampling, level sampling, or the number of samples per pixel. Below I will discuss the tradeoffs between speed, memory usage, and antialiasing power between the three various techniques: <br/><br/><br/><strong>Pixel Sampling: </strong>Fastest speed since we only need to compute one sample per pixel. Similarly, for memory usage we only need to store one color value for each pixel, therefore it uses minimal memory. Antialiasing power is not as strong since each pixel is sampled once so fine details are not captures and jaggies effect can still be present, although minimized<br/><br/><strong>Level Sampling/mipmapping: </strong>Still fast although theres a bit of overhead to compute derivatives and taking a level, but we are still sampling once per pixel. In terms of memory usage, we use more memory than pixel sampling since we need to store the mipmap pyramid. Antialiasing power is fairly strong, especially when choosing a lower resolution mipmap level.<br/><br/><strong>Number of samples per pixel/Super sampling:</strong> This method is the slowest since we take multiple samples per pixel, which increases number of computations. We need a larger sample buffer to store all the subsamples until they are averaged to compute the final pixel color. Antialiasing power is strong here since it is able to average out high frequency details, producing much smoother results. Edges are smoothed, reducing jaggies. </p><p id="19ffb006-dea9-80d0-9814-d0a3cfb317c6" class="">
+</p><p id="19ffb006-dea9-8009-960e-e2d98fca6a4b" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
