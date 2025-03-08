@@ -1,116 +1,707 @@
-<html>
-	<head>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-		<style>
-			h1 {
-				text-align: center;
-			}
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>COMPSCI 184 Homework 2</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
 
-			.container {
-				margin: 0 auto;
-				padding: 60px 20%;
-			}
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 1000px;
+		color: rgb(55, 53, 47);
+	}
+}
 
-			figure {
-				text-align: center;
-			}
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
 
-			img {
-				display: inline-block;
-			}
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
 
-			body {
-				font-family: 'Inter', sans-serif;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-		<h1>CS184/284A Spring 2025 Homework 2 Write-Up</h1>
-		<div style="text-align: center;">Names: </div>
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
 
-		<br>
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
 
-		Link to webpage: (TODO) <a href="https://cs184.eecs.berkeley.edu/sp25">cs184.eecs.berkeley.edu/sp25</a>
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
 
-		<br>
-		
-		Link to GitHub repository: (TODO) <a href="https://cs184.eecs.berkeley.edu/sp25">cs184.eecs.berkeley.edu/sp25</a>
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
 
-		<figure>
-			<img src="teapot.png" alt="Teapot" style="width:50%"/>
-			<figcaption>You can add images with captions!</figcaption>
-		</figure>
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
 
-		<!--
-		We've already added one heading per part, to make your write-up as navigable when grading. Please fit your write-up within these sections!
-		-->
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
 
-		<h2>Overview</h2>
-		Give a high-level overview of what you implemented in this homework. Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
 
-		<h2>Section I: Bezier Curves and Surfaces</h2>
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
 
-		<h3>Part 1: Bezier curves with 1D de Casteljau subdivision</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
 
-		<p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
-		<div style="display: flex; flex-direction: column; align-items: center;">
-			<table style="width: 100%; text-align: center; border-collapse: collapse;">
-			  <tr>
-				<td style="text-align: center;">
-				  <img src="teapot.png" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-				<td style="text-align: center;">
-				  <img src="teapot.png" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-			  </tr>
-			  <tr>
-				<td style="text-align: center;">
-				  <img src="teapot.png" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-				<td style="text-align: center;">
-				  <img src="teapot.png" width="400px"/>
-				  <figcaption>Caption goes here.</figcaption>
-				</td>
-			  </tr>
-			</table>
-		</div>
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
 
-		<h3>Part 2: Bezier surfaces with separable 1D de Casteljau</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+mark {
+	background-color: transparent;
+}
 
-		<h2>Section II: Triangle Meshes and Half-Edge Data Structure</h2>
+.indented {
+	padding-left: 1.5em;
+}
 
-		<h3>Part 3: Area-weighted vertex normals</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
 
-		<h3>Part 4: Edge flip</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+img {
+	max-width: 100%;
+}
 
-		<h3>Part 5: Edge split</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
 
-		<h3>Part 6: Loop subdivision for mesh upsampling</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+@page {
+	margin: 1in;
+}
 
-		<h2>(Optional) Section III: Potential Extra Credit - Art Competition: Model something Creative</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+.collection-content {
+	font-size: 0.875rem;
+}
 
-		<h2>Additional Notes (please remove)</h2>
-		<ul>
-			<li>You can also add code if you'd like as so: <code>code code code</code></li>
-			<li>If you'd like to add math equations, 
-				<ul>
-					<li>You can write inline equations like so: \( a^2 + b^2 = c^2 \)</li>
-					<li>You can write display equations like so: \[ a^2 + b^2 = c^2 \]</li>
-				</ul>
-			</li>
-		</ul>
-		</div>
-	</body>
-</html>
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1abfb006-dea9-80c2-bacd-fbde96cb1afb" class="page serif"><header><h1 class="page-title">COMPSCI 184 Homework 2</h1><p class="page-description"></p></header><div class="page-body"><p id="1abfb006-dea9-80b3-ab60-cdf996b7062c" class="">Link to webpage: <a href="https://cal-cs184-student.github.io/hw-webpages-kaitlync/hw1/index.html">https://cal-cs184-student.github.io/hw-webpages-kaitlync/hw2/index.html</a></p><p id="1abfb006-dea9-80af-93f6-f8f32369adad" class="">Link to GitHub repository: <a href="https://github.com/cal-cs184-student/sp25-hw2-kaitlync2">https://github.com/cal-cs184-student/sp25-hw2-kaitlync2</a></p><h3 id="1abfb006-dea9-80aa-babf-e8823ea9d1ec" class="">Kaitlyn Chen </h3><h2 id="1abfb006-dea9-8068-90a9-fca76999e1a8" class="">Overview:</h2><p id="1b0fb006-dea9-80a2-8543-e308ff257a80" class="block-color-gray_background">In this assignment, we explore geometric modeling techniques. We built Bezier curves and surfaces using de Casteljau’s algorithm. We manipulated triangle meshes and explored half edge data structure to implement Phong shading for realistic shading, remeshing operations (edge flips and edge splits), and loop subdivision for upsampling meshes. Overall this project deepened my understanding of geometric processing and gave me experience working through algorithms I’ve only learned in theory. I learned how powerful half edge data structures are to save memory and represent connectivity of triangular meshes!</p><h1 id="1abfb006-dea9-8073-a255-ca9c1cdaad06" class="">Section 1: <strong>Bezier Curves and Surfaces</strong></h1><h2 id="1abfb006-dea9-80f6-a0dc-dff2e72c2a6e" class=""><strong>Part 1: Bezier Curves with 1D de Casteljau Subdivision</strong></h2><div id="1adfb006-dea9-804c-97d8-e4eb2592cd66" class="column-list"><div id="1adfb006-dea9-80b3-b4dc-ed4a851d13e0" style="width:75%" class="column"><p id="1abfb006-dea9-80c6-8c9c-fad2e2fd93f2" class="block-color-gray_background">De Casteljau’s algorithm is a recursive algorithm to evaluate Bezier Curves and Surfaces. An <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span>-degree Bezier curve is defined by <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> control points and parameterized by a value <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span>, where <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">t \in [0, 1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6542em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></span><span>﻿</span></span>. While a <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n, m) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> degree Bezier surface is defined by <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mtext>x</mtext><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n+1)\text{x}(m+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord text"><span class="mord">x</span></span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> points and parameterized by two parameter values <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span><span>﻿</span></span>, where <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">u, v \in [0, 1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></span><span>﻿</span></span>. De Casteljau’s algorithm takes the <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+1 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span><span>﻿</span></span> control points and parameter <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span> and linearly interpolates between adjacent control points to create a new set of intermediate points. We can define each new intermediate point <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mtext>′​</mtext><mo>=</mo><mi>l</mi><mi>e</mi><mi>r</mi><mi>p</mi><mo stretchy="false">(</mo><msub><mi>p</mi><mi>i</mi></msub><mtext>​</mtext><mo separator="true">,</mo><msub><mi>p</mi><mi>i</mi></msub><mo>+</mo><mn>1</mn><mtext>​</mtext><mo separator="true">,</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo stretchy="false">)</mo><msub><mi>p</mi><mi>i</mi></msub><mtext>​</mtext><mo>+</mo><mi>t</mi><msub><mi>p</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn><mtext>​</mtext></mrow></msub></mrow><annotation encoding="application/x-tex">p_i′​ = lerp(p_i​,p_i+1​,t)=(1−t)p_i​+tp_{i+1​}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.75em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">′​</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">​</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1​</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">​</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8234em;vertical-align:-0.2083em;"></span><span class="mord mathnormal">t</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1​</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span><br/> We recursively apply this process until only a single point remains. This remaining point is a point on the Bezier curve at the given parameter <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span>. In this part of the assignment we implement a function to run only one step of this algorithm (one subdivision). <br/>Below I show an examples of De Casteljau’s algorithm and to the right I show a slightly different Bezier curve by moving the original control points around and modifying the parameter t<br/></p></div><div id="1adfb006-dea9-8012-884a-cc83b7c82c5f" style="width:25%" class="column"><figure id="1abfb006-dea9-8043-866e-f4e120dc6b05" class="image" style="text-align:right"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/e2453395-b179-4982-89b9-deab66003519.png"><img style="width:384px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/e2453395-b179-4982-89b9-deab66003519.png"/></a><figcaption>a slightly different Bezier curve</figcaption></figure></div></div><figure id="1acfb006-dea9-80bc-8073-e56d4dc4eeed" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/b62743bf-75a1-48c3-8a31-42cad1178138.png"><img style="width:1225.328125px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/b62743bf-75a1-48c3-8a31-42cad1178138.png"/></a><figcaption>screenshots of each step of the evaluation from 6 original control points down to the final evaluated point, and the final bezier curve:</figcaption></figure><h2 id="1abfb006-dea9-8046-b664-db1557293cda" class=""><strong>Part 2: Bezier Surfaces with Separable 1D de Casteljau</strong></h2><div id="1acfb006-dea9-8090-b62f-ecdfa9001849" class="column-list"><div id="1acfb006-dea9-80bb-9a80-c20de440322d" style="width:56.25%" class="column"><p id="1acfb006-dea9-80ea-a029-e199e24fa335" class="block-color-gray_background">As mentioned in part 1, a <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n, m) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> degree Bezier surface is defined by control  points and parameterized by two parameter values <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span><span>﻿</span></span>, where <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">u, v \in [0, 1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></span><span>﻿</span></span>. De Casteljau’s algorithm extends to Bezier Curves by applying the 1D algorithm to two directions, u and v. Such extended algorithm is as such: for a Bezier curve defined by <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mtext>x</mtext><mi>n</mi></mrow><annotation encoding="application/x-tex">n\text{x}n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mord text"><span class="mord">x</span></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span> control points, we apply De Casteljau’s algorithm to each row of the with parameter u, where each row is a 1D Bezier curve. This step will give you <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span> intermediate points all at parameter <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span></span><span>﻿</span></span>. The second step applies De Casteljau’s algorithm to the n intermediate points just calculated using parameter , which results in a final single point that lies on the Bezier surface at <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span><span>﻿</span></span>.</p><figure id="1acfb006-dea9-8035-8052-d6d9b0b6a62f" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-03_at_11.21.00_PM.png"><img style="width:663.185791015625px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-03_at_11.21.00_PM.png"/></a><figcaption> visualization of evaluating a (3,3) bezier surface point (u, v) with (4x4) control points. Taken from cs184 lecture</figcaption></figure></div><div id="1acfb006-dea9-807e-8d52-e372ed7cfe87" style="width:43.75%" class="column"><figure id="1abfb006-dea9-8026-b4e4-c85a282ed377" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/aa62d502-b297-4123-9468-b72e1ae3f775.png"><img style="width:446.23448275862063px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/aa62d502-b297-4123-9468-b72e1ae3f775.png"/></a><figcaption>screenshot of <code>bez/teapot.bez</code> evaluated by my implementation</figcaption></figure><p id="1acfb006-dea9-8094-bb60-d7b526a6165a" class="">
+</p></div></div><h1 id="1abfb006-dea9-80ae-b5d0-db9523cacd6f" class=""><strong>Section II: Triangle Meshes and Half-Edge Data Structure</strong></h1><h2 id="1acfb006-dea9-8049-9a4c-edf3de4a1a53" class=""><strong>Part 3: Area-Weighted Vertex Normals</strong></h2><div id="1adfb006-dea9-8055-b5e4-f76b017d3c01" class="column-list"><div id="1adfb006-dea9-80cb-9fd3-eae31b38f36b" style="width:33.33333333333333%" class="column"><p id="1acfb006-dea9-800e-897f-e45da0138e0c" class="block-color-gray_background">In this part I implemented area-weighted normal vectors at vertices for shading smooth surfaces, such as the Phong Shading technique. To compute the area-weighted normal vector at a vertex, I used the half-edge data structure (shown to the right) to iterate through the faces/triangles incident to the given vertex (faces/triangles that has the given vertex as one of its vertices). I chose to iterate through the faces counterclockwise about the given vertex. We stop iterating once we return to the original half edge associated with the given vertex. For each triangle I got the position of its three vertices, computed 2 edge vectors, calculated their cross product to find a third vector normal to the triangle face and whose magnitude is proportional to the face’s area. After finding area- weighted normals for all incident triangles, I sum them and normalize to produce a unit vector normal for smooth shading. </p><figure id="1acfb006-dea9-80b7-86e3-df4ba50da7f2" class="image" style="text-align:left"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/2956fd12-8c3e-4179-aba5-a3d6fefbeed8.png"><img style="width:480px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/2956fd12-8c3e-4179-aba5-a3d6fefbeed8.png"/></a><figcaption>visualization of half-edge data structure. taken from cs184 lecture</figcaption></figure><p id="1adfb006-dea9-8074-91b8-c79aaea9d553" class="">
+</p></div><div id="1adfb006-dea9-80cb-9524-c9d95a835cb2" style="width:20.833333333333336%" class="column"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1adfb006-dea9-807a-b806-e08fe645557c" class="code"><code class="language-C++" style="white-space:pre-wrap;word-break:break-all">struct Halfedge {
+ Halfedge *twin,
+ Halfedge *next;
+ Vertex *vertex;
+ Edge *edge;
+ Face *face;
+}
+struct Vertex {
+ Point pt;
+ Halfedge *halfedge;
+}
+struct Edge {
+ Halfedge *halfedge;
+}
+struct Face {
+ Halfedge *halfedge;
+</code></pre><p id="1adfb006-dea9-80f7-83c6-db7bd1477b6e" class="">
+</p></div><div id="1adfb006-dea9-80c9-ad90-ee63b322bf48" style="width:45.83333333333334%" class="column"><figure id="1adfb006-dea9-800a-9cef-eb293accbcb5" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_7.20.28_PM.png"><img style="width:589.4878540039062px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_7.20.28_PM.png"/></a><figcaption>screenshot of <code>dae/teapot.dae</code> without vertex normal (flat shading)</figcaption></figure><figure id="1adfb006-dea9-8061-a928-da8f73bd35b4" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_7.20.12_PM.png"><img style="width:589.4878540039062px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_7.20.12_PM.png"/></a><figcaption>screenshot of <code>dae/teapot.dae</code> with vertex normal (Phong shading)</figcaption></figure></div></div><h2 id="1acfb006-dea9-8050-aa92-ed87bc776e9c" class="">Part 4: Edge Flip</h2><div id="1adfb006-dea9-801d-90f5-dda1d6c698d2" class="column-list"><div id="1adfb006-dea9-8037-83ea-f63631df6a10" style="width:56.25%" class="column"><p id="1adfb006-dea9-800c-bc65-e51386df2f24" class="block-color-gray_background">In this section I implemented a local remeshing on an edge, a flip. Given two pairs of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b, c) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>c</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(c, b, d) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>, the flip operation on a shared edge <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b, c) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> converts the original pair of triangles to a new pair <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>d</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, d, c) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>d</mi><mo separator="true">,</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(d, a, b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>. Our implementation of this flip function takes in the original edge <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b, c)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> and outputs the flipped edge <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, d)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>. To implement this we need to ensure all pointers of all mesh elements (half-edges, vertices, edges, and faces) all point to the correct elements at the end of the function.  We also are not deleting or adding any elements. We are only given an input edge, <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">e_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>. We first need to check whether or not <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">e_0 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> is a boundary edge or if either adjacent face to it is a boundary, in which we would just immediately return <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">e_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>. We need to create halfedge iterators (HalfedgeIter) for all halfedges in the original mesh (ie.<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b, c) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>c</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(c, b, d) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>) , we do this by simply using the edge and half edge data structure to iterate through the mesh. Using these halfedges, for each vertex, edge, and face, set its halfedge pointer, based upon the original mesh still.  Now, for each halfedge, update its pointer elements, setting its next, twin, vertex, edge, and face pointer to the correct element, post flip. Next, using these updated halfedges, for each vertex, edge, and face, update its halfedge pointer, based on the new mesh.  We can now return the flipped <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">e_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> edge. I did not encounter any eventful debugs. </p><figure id="1adfb006-dea9-80a8-a4be-dca11fbc4c42" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/9545e76a-a4ad-4c61-8c22-b7431aba80af.png"><img style="width:432px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/9545e76a-a4ad-4c61-8c22-b7431aba80af.png"/></a><figcaption>visualization of edge flip. taken from cs184 material</figcaption></figure><figure id="1adfb006-dea9-8011-b520-ff697aade753" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/image.png"><img style="width:736.857666015625px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/image.png"/></a><figcaption>drawing of mesh elements before and post flip </figcaption></figure></div><div id="1adfb006-dea9-8026-bc02-f59ff3246423" style="width:43.75000000000002%" class="column"><figure id="1adfb006-dea9-8012-98e6-e888dcd0ed81" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_7.31.41_PM.png"><img style="width:589.4878540039062px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_7.31.41_PM.png"/></a><figcaption>screenshot of <code>dae/teapot.dae</code> without edge flips</figcaption></figure><figure id="1adfb006-dea9-80c5-85bd-dfd7d1ebfea9" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_7.32.40_PM.png"><img style="width:589.4878540039062px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_7.32.40_PM.png"/></a><figcaption>screenshot of <code>dae/teapot.dae</code> with edge flips</figcaption></figure><p id="1adfb006-dea9-804c-80d0-cee60a2ebd0a" class="">
+</p></div></div><h2 id="1adfb006-dea9-8008-8f48-eb5d7fd84304" class="">Part 5:  Edge Split</h2><div id="1adfb006-dea9-806e-a96d-f8a55258102d" class="column-list"><div id="1adfb006-dea9-80df-918d-c338fc12ff88" style="width:56.25%" class="column"><p id="1adfb006-dea9-8090-b570-ce2c78d9440a" class="block-color-gray_background">In this section I implemented a another local remeshing on an edge, a split.  Given two pairs of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b, c) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>c</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(c, b, d) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>, the split operation on a shared edge <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b, c) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> inserts a new vertex <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span><span>﻿</span></span> at the midpoint and connects the new vertex to each opposing vertex <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span></span><span>﻿</span></span>. Unlike flip, this operation will add mesh elements: 1 more vertex, 3 new edges, 3 new faces,  and 6 new halfedges.  Our implementation of this split function takes in the original edge <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b, c)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>, <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>0</mn></msub><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">e_0,</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span></span></span></span></span><span>﻿</span></span> and outputs the new vertex <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span><span>﻿</span></span>.To implement this we again need to ensure all pointers of both old and new mesh elements (half-edges, vertices, edges, and faces) all point to the correct elements at the end of the function. As before, we first need to check whether or not <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">e_0 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> is a boundary edge or if either adjacent face to it is a boundary, in which we would just immediately return. As before, we need to create halfedge iterators (HalfedgeIter) for all halfedges in the original mesh (ie.<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b, c) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>c</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(c, b, d) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>) , we do this by simply using the edge and half edge data structure to iterate through the mesh. Using these halfedges, for each vertex, edge, and face, set its halfedge pointer, based upon the original mesh still.  Now is where the implementation differs from flip. We first need to create the new vertex <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span><span>﻿</span></span> by finding the midpoint of the two vertices adjacent to <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">e_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>. Now, for all halfedges, update its pointer elements, setting its next, twin, vertex, edge, and face pointer to the correct element, post split. Then, using these updated halfedges, for all vertices, edges, and faces, update their halfedge pointer, based on the new mesh. Finally we return <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span><span>﻿</span></span>. <br/>I did not encounter any interesting bugs or implementation tricks. <br/></p><figure id="1adfb006-dea9-8001-99c2-c8fd00c8f62d" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_9.37.37_PM.png"><img style="width:589.4791870117188px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_9.37.37_PM.png"/></a><figcaption>visualization of edge split, taken from cs184 content</figcaption></figure><figure id="1adfb006-dea9-800a-9997-f27fefbc7f7a" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/image%201.png"><img style="width:589.4791870117188px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/image%201.png"/></a><figcaption>drawing of mesh elements before and post split</figcaption></figure><p id="1adfb006-dea9-80ea-b8b2-ec115434b21a" class="">
+</p></div><div id="1adfb006-dea9-8088-b317-f85edc922a48" style="width:43.75000000000001%" class="column"><figure id="1adfb006-dea9-8097-b4ed-c7d2c8dace07" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_9.10.53_PM.png"><img style="width:1225.3125px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_9.10.53_PM.png"/></a><figcaption><code>dae/cow.dae</code> with no changes</figcaption></figure><figure id="1adfb006-dea9-8010-a553-eee2a6861f00" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_9.12.31_PM.png"><img style="width:589.4878540039062px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_9.12.31_PM.png"/></a><figcaption><code>dae/teapot.dae</code> with edge splits</figcaption></figure><figure id="1adfb006-dea9-8008-9e96-fb8113f6fcfa" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_9.15.22_PM.png"><img style="width:589.4878540039062px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-04_at_9.15.22_PM.png"/></a><figcaption><code>dae/teapot.dae</code> with edge splits and flips </figcaption></figure></div></div><h2 id="1adfb006-dea9-8070-a02c-c211f7ecc56c" class="">Part 6: <strong>Loop Subdivision for Mesh Upsampling</strong></h2><div id="1b0fb006-dea9-80a0-a51a-c797c27b8115" class="column-list"><div id="1b0fb006-dea9-8050-9f52-c858671b9f03" style="width:56.25%" class="column"><p id="1acfb006-dea9-80c9-94e2-fbaf6d6ddd69" class="block-color-gray_background">In this section we want to convert coarse polygon meshes into higher resolution ones for better  simulation, rendering, and display. To do so we need an upsampling algorithm that interpolates well and approximates the original mesh data. We need an algorithm that allows us to do this in 3D, since 2D bilinear filtering does not translate well into 3D. In this section we will be implementing the loop subdivision algorithm to upsample meshes. <br/><br/>Loop subdivision upsamples by essentially: <br/>1. 4-1 subdivision: subdividing each triangle into 4 smaller triangles and then <br/>2. updating the vertices of this subdivided mesh based on a weighting scheme<br/>We can apply 4-1 subdivision over all triangles of a mesh by first splitting every existing/”old” edge to create “new” vertices, then edge flip every edge that connects a “new” vertex and an old one.  Then we update each vertex of this subdivided mesh by using a weighted average of neighboring vertex positions. <br/><br/>Equation #1: The position of a new edge’s vertex splitting the shared edge between a pair of triangle  and <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>A</mi><mo separator="true">,</mo><mi>B</mi><mo separator="true">,</mo><mi>D</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(A, B, D) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> is<br/> <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi mathvariant="normal">/</mi><mn>8</mn><mo>∗</mo><mo stretchy="false">(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>8</mn><mo stretchy="false">(</mo><mi>C</mi><mo>+</mo><mi>D</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">3/8 * (A+B) + 1/8(C+D)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3/8</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/8</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span><br/><br/>Equation #2: The updated position of the old vertex is<br/><br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>n</mi><mo>∗</mo><mi>u</mi><mo stretchy="false">)</mo><mo>∗</mo><mi>o</mi><mi>r</mi><mi>i</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>a</mi><mi>l</mi><mi>P</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>+</mo><mi>u</mi><mo>∗</mo><mi>o</mi><mi>r</mi><mi>i</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>a</mi><mi>l</mi><mi>N</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>b</mi><mi>o</mi><mi>r</mi><mi>P</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>S</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">(1-n*u)*originalPosition + u*originalNeighborPositionSum</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">u</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">ina</span><span class="mord mathnormal" style="margin-right:0.13889em;">lP</span><span class="mord mathnormal">os</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">ina</span><span class="mord mathnormal" style="margin-right:0.10903em;">lN</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">hb</span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">os</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span></span></span></span></span><span>﻿</span></span><br/>where <br/><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span></span><span>﻿</span></span> are defined as shown in the image on the right. </p></div><div id="1b0fb006-dea9-806a-a4e8-fbfc741d5be1" style="width:43.75000000000001%" class="column"><figure id="1b0fb006-dea9-80a0-bf39-e5741a8565cd" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_6.12.16_PM.png"><img style="width:1225.295166015625px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_6.12.16_PM.png"/></a><figcaption>4-1 subdivision of a triangle - taken from cs184 content</figcaption></figure><figure id="1b0fb006-dea9-8098-8508-ca42e8457144" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_6.12.43_PM.png"><img style="width:1225.3038330078125px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_6.12.43_PM.png"/></a><figcaption>4-1 subdivision over an entire mesh - taken from cs184 content</figcaption></figure><p id="1b0fb006-dea9-8071-bc2a-cbec514843bf" class="">
+</p><figure id="1b0fb006-dea9-80bc-998a-d61a075e1e91" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_6.19.54_PM.png"><img style="width:589.4791870117188px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_6.19.54_PM.png"/></a><figcaption>illustration of updating vertices of a subdivided mesh based on a weighting scheme- from cs184</figcaption></figure></div></div><p id="1b0fb006-dea9-805b-bdf6-ee42782a01e8" class="block-color-gray_background">To implement this algorithm in C++ requires some modification to the ordering of the steps outlined and more attention is needed to ensure “old” and “new” elements are taken care of. Specifically we want to compute the positions of both new and old vertices using the original mesh before subdividing because traversing a coarser mesh is easier than a subdivided some.   Since we are precomputing these values we need to store them in temporary fields to be called later for actually updating said values. <br/>In my algorithm I first need to iterate through all the original, “old” vertices to mark them as “old” (<br/><code>v→isNew = false</code>), and compute all the new positions for the original “old” vertices. We compute all the new positions using the above equation #2. We simply can call <code>v→position</code> to get the original position. To obtain <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span> and the sum of the neighboring vertex positions, we can iterate through the the mesh using the halfedge data structure, as used in previous parts. Each new position is stored in a tempory field <code>Vertex::newPosition</code> to be applied at the end. Next we want to find all the new edge positions. We iterate through all the original edges of the mesh (<code>!v-&gt;isNew = false</code> ) and compute the new position of the edge’s vertex using equation #1, accessing vertex positions of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo separator="true">,</mo><mi>B</mi><mo separator="true">,</mo><mi>C</mi><mo separator="true">,</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">A, B, C, D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span><span>﻿</span></span> by iterating with halfedge data structure. Similarly to the first step, we store the new edge position as a temporary field <code>Edge::newPosition</code> .  Next is edge splitting. I first collect all the original edges and store them in a vector to ensure we don’t accidentally split edges that we just created from a split, resulting in an infinite loop. Now, for each original edge we want to split the edge to create a new vertex, <code>newV</code> by using the edge split function implmented in part 5. We want to store the new position of <code>newV</code> as the the original edge’s new position we calculated in the previous step, <code>newV-&gt;newPosition = e-&gt;newPosition</code> . We also need set <code>newV-&gt;isNew = true</code> and set the new edge created to <code>isNew = true</code> . Next is edge flipping. We want to only flip edges that connect an old vertex and a new vertex. Similar to splitting, we want to store all such edges in a vector first to ensure we don’t accidentally flip infinitely. Once all appropriate edges have been flipped we can copy all the new vertex positions into final <code>Vertex::position</code>. We want to set all edges and vertices to <code>isNew = false</code> for successive calls to the function. I encountered a bug in which one of the triangles of cube.dae was not subdividing. I debugged by commenting out my code section by section, in which i realized my issue lied in that I was looping through a vertex’s adjacent edges incorrectly. After I fixed such, I got the correct results.</p><p id="1b0fb006-dea9-80ab-a518-dd678242c833" class="">Example images:</p><div id="1b0fb006-dea9-807c-9c84-eb56f8afff15" class="column-list"><div id="1b0fb006-dea9-8039-a0a6-dd55213ea077" style="width:20%" class="column"><figure id="1b0fb006-dea9-80a4-a1cf-cf14d3075c0f" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.08.54_PM.png"><img style="width:1225.3212890625px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.08.54_PM.png"/></a><figcaption><code>dae/cube.dae</code></figcaption></figure></div><div id="1b0fb006-dea9-80bb-98e1-ce339d342056" style="width:20%" class="column"><figure id="1b0fb006-dea9-8074-8697-cb19f806f11d" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/4ab88221-36e2-4ffb-8b88-faa88249b19d.png"><img style="width:401.65757906215924px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/4ab88221-36e2-4ffb-8b88-faa88249b19d.png"/></a></figure></div><div id="1b0fb006-dea9-8062-a176-fe71be2649a0" style="width:20%" class="column"><figure id="1b0fb006-dea9-8090-b37d-da7e3d53ae2a" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/c29ef935-8ad9-4fb8-bf96-59cea6c9c3c7.png"><img style="width:388.2758620689655px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/c29ef935-8ad9-4fb8-bf96-59cea6c9c3c7.png"/></a></figure></div><div id="1b0fb006-dea9-808c-969a-d012a7293e56" style="width:20%" class="column"><figure id="1b0fb006-dea9-80c4-b4d7-d668c84c94c2" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_8.01.10_PM.png"><img style="width:1225.3299560546875px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_8.01.10_PM.png"/></a></figure></div><div id="1b0fb006-dea9-80cb-9c45-e856d6bc2621" style="width:20%" class="column"><figure id="1b0fb006-dea9-80fe-9dd4-d79dd02be02a" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_8.02.06_PM.png"><img style="width:1225.3212890625px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_8.02.06_PM.png"/></a></figure></div></div><div id="1b0fb006-dea9-80cd-83d7-f2cfac4991cd" class="column-list"><div id="1b0fb006-dea9-80de-b899-f101e8800f12" style="width:20%" class="column"><figure id="1b0fb006-dea9-805b-81a2-e297803a8174" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.51.42_PM.png"><img style="width:1225.3212890625px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.51.42_PM.png"/></a><figcaption><code>/dae/torus/input.dae</code></figcaption></figure></div><div id="1b0fb006-dea9-8003-9e77-f67efbfb3c70" style="width:20%" class="column"><figure id="1b0fb006-dea9-8026-a649-ce8f82d6687f" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.52.02_PM.png"><img style="width:589.4791870117188px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.52.02_PM.png"/></a></figure></div><div id="1b0fb006-dea9-805c-8bcc-c00fcaa6cf91" style="width:20%" class="column"><figure id="1b0fb006-dea9-8055-8f4e-d0c1ec3aa4da" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.52.15_PM.png"><img style="width:377.6562805175781px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.52.15_PM.png"/></a></figure></div><div id="1b0fb006-dea9-800c-88d7-c4d3238add57" style="width:20%" class="column"><figure id="1b0fb006-dea9-80d1-b951-d716953fb44e" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.52.32_PM.png"><img style="width:271.7361145019531px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.52.32_PM.png"/></a></figure></div><div id="1b0fb006-dea9-80ee-a15c-e76bd4fabcbd" style="width:20%" class="column"><figure id="1b0fb006-dea9-801d-916b-f8a5173ba8b0" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.52.49_PM.png"><img style="width:976px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.52.49_PM.png"/></a></figure></div></div><div id="1b0fb006-dea9-8022-9121-c817a63869ba" class="column-list"><div id="1b0fb006-dea9-80ec-a381-dcdc4a491279" style="width:25%" class="column"><figure id="1b0fb006-dea9-80fa-8e41-e349e4cadd20" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.54.28_PM.png"><img style="width:1225.3299560546875px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.54.28_PM.png"/></a><figcaption><code>/dae/icosahedron/input.dae</code></figcaption></figure></div><div id="1b0fb006-dea9-8068-83d7-f7166004c330" style="width:25%" class="column"><figure id="1b0fb006-dea9-800d-b668-c9e8a2984faa" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.54.41_PM.png"><img style="width:589.4878540039062px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.54.41_PM.png"/></a></figure></div><div id="1b0fb006-dea9-80c5-a034-c6b8f3109775" style="width:25%" class="column"><figure id="1b0fb006-dea9-809c-b92d-eaf0503fb194" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.54.50_PM.png"><img style="width:1225.3212890625px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.54.50_PM.png"/></a></figure></div><div id="1b0fb006-dea9-802c-9ff4-ec869c85513e" style="width:25%" class="column"><figure id="1b0fb006-dea9-80ca-b819-ea7e4e8ae2f1" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.55.07_PM.png"><img style="width:377.6562805175781px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.55.07_PM.png"/></a></figure></div></div><div id="1b0fb006-dea9-809d-8c3a-e0539b61fb78" class="column-list"><div id="1b0fb006-dea9-803d-bb58-fdb7bad12a66" style="width:33.333333333333336%" class="column"><figure id="1b0fb006-dea9-8004-9883-de102e96547b" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.58.15_PM.png"><img style="width:1225.3212890625px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.58.15_PM.png"/></a><figcaption><code>/dae/teapot.dae</code></figcaption></figure></div><div id="1b0fb006-dea9-80d0-97da-e8de40fab0c6" style="width:33.333333333333336%" class="column"><figure id="1b0fb006-dea9-80b6-ba66-f0fe37561585" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.58.25_PM.png"><img style="width:589.4878540039062px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.58.25_PM.png"/></a></figure></div><div id="1b0fb006-dea9-8087-9a4f-fd1bd6cbcb5b" style="width:33.33333333333333%" class="column"><figure id="1b0fb006-dea9-80de-83f7-e10d1c72e6a2" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.58.46_PM.png"><img style="width:1225.3125px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.58.46_PM.png"/></a></figure></div></div><p id="1b0fb006-dea9-80f8-aaec-e7244cbe32d3" class="block-color-gray_background">After loop subdivision the meshes tend to get smoother and less defined, especially at sharp corners and edges since the new positions are computed as averages of the neighboring vertices. So as we can see after only 3 subdivisions the cube already starts too look more like a ball. We can reduce this effect by pre-splitting some edges helps preserve the sharpness of some edges and corners. For instance if we split some edges on a sharp corner before subdividing we can better control how that corner is averaged. We notice that <code>dae/cube.dae</code> becomes slightly asymmetric after some subdivisions. This occurs since some vertices have different degrees or neighboring topology, which makes the weighted average result in non-uniform positions. We can preprocess the cube with splits and edge flips to create a more uniform pattern in which vertices and faces are all as similar as possible. This helps the weighted average be more uniform across the mesh. </p><p id="1b0fb006-dea9-8064-95f7-daa92c338621" class="">Example of preprocessed mesh: </p><div id="1b0fb006-dea9-80b3-bc7a-f8f0e0fe2ca6" class="column-list"><div id="1b0fb006-dea9-801a-bc37-df00fa333c1a" style="width:33.333333333333336%" class="column"><figure id="1b0fb006-dea9-80ac-87f7-f92db31d1a4c" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/0df2923a-e7a0-459e-b30c-5eb3868170f6.png"><img style="width:406.95172413793097px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/0df2923a-e7a0-459e-b30c-5eb3868170f6.png"/></a><figcaption>preprocessed <code>dae/cube.dae</code></figcaption></figure></div><div id="1b0fb006-dea9-805b-9df4-cd5cf2c6a56d" style="width:33.333333333333336%" class="column"><figure id="1b0fb006-dea9-803b-8261-f51014e599cd" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.04.00_PM.png"><img style="width:1225.3212890625px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.04.00_PM.png"/></a></figure></div><div id="1b0fb006-dea9-80cf-b926-c5a2ed5b5661" style="width:33.33333333333333%" class="column"><figure id="1b0fb006-dea9-80b2-84f1-dbf103a2d780" class="image"><a href="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.08.19_PM.png"><img style="width:377.6562805175781px" src="COMPSCI%20184%20Homework%202%201abfb006dea980c2bacdfbde96cb1afb/Screen_Shot_2025-03-07_at_9.08.19_PM.png"/></a></figure></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
