@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CS 184/284 Final Project Report</title>
+  <style>
+    /* Make the PDF fill the screen, remove default margins */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    #pdf-viewer {
+      width: 100%;
+      height: calc(100% - 50px); /* leave room for header */
+      border: none;
+    }
+    header {
+      height: 50px;
+      background: #333;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+    header h1 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    .download-link {
+      margin-left: auto;
+      font-size: 0.9rem;
+    }
+    .download-link a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Final Project Report</h1>
+    <div class="download-link">
+      <a href="report.pdf" target="_blank">Download PDF</a>
+    </div>
+  </header>
+
+  <!-- Embedded PDF -->
+  <iframe
+    id="pdf-viewer"
+    src="report.pdf"
+    type="application/pdf">
+    <!-- fallback for very old browsers -->
+    <p>Your browser does not support embedded PDFs. 
+       <a href="report.pdf" target="_blank">Click here to download the PDF.</a>
+    </p>
+  </iframe>
+
+</body>
+</html>
