@@ -1,92 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-	<style>
-			h1 {
-				text-align: center;
-			}
-
-			.container {
-				margin: 0 auto;
-				padding: 60px 20%;
-			}
-
-			figure {
-				text-align: center;
-			}
-
-			img {
-				display: inline-block;
-			}
-
-			body {
-				font-family: 'Inter', sans-serif;
-				line-height: 1.4;
-				color: #32323a;
-				background-color: #ffffff;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				width: 40%;
-				height: 100%;
-				margin: 0;
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
-			}
-
-		@media (max-width: 600px) {
-			body {
-				width: 100%;
-				left: 0;
-				transform: none;
-			}
-		}
-
-		a {
-			text-decoration: none;
-			color: #0057A8;
-		}
-
-		a:hover {
-			color: #8E018E !important;
-			text-decoration: underline;
-		}
-	</style>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS184/284A Homework Webpages</title>
-	</head>
-	<body>
-		<div class="wrapper">
-			<header>
-				<h1 style="align-self:flex-end;">Kaitlyn J Chen's CS184/284A Webpages</h1>
-			</header>
-			<main>
-				<div class="content">
-					<ul>
-						<li><a href="/hw1/index.html">Homework 1</a></li>
-						<li><a href="/hw2/index.html">Homework 2</a></li>
-						<li><a href="/hw3/index.html">Homework 3</a></li>
-						<li><a href="/hw4/index.html">Homework 4</a></li>
-                        <li><a href="/finalproj-proposal/index.html">Final Project Proposal</a></li>
-						<li><a href="/finalproj-milestone/index.html">Final Project Milestone Report</a></li>
-						<li><a href="/finalproj-submission/index.html">Final Project Report</a></li>
-					</ul>
-				</div>
-			</main>
-		</div>
-	</body>
-	<script>
-		var links = document.body.getElementsByTagName("a")
-		var a = window.location.href.indexOf(".io")
-		var repo_name = window.location.href.substring(a+3)
-		for(var i = 0; i < links.length; i++){
-			var link = links[i]
-			var actual_name = link.href.substring(link.href.indexOf(".io")+4)
-			link.href = repo_name + actual_name
-		}
-	</script>
+    <title>My CS180 Portfolio</title>
+    <style>
+        /* ----- Page Layout ----- */
+        :root {
+            /* easy tweaks */
+            --card-width: 300px;           /* fixed width of a project card */
+            --gap-size: 32px;             /* space between cards */
+            --page-padding: 24px 5vw;     /* top-bottom / left-right */
+        }
+
+        /* base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background:#f4f4f4;
+            padding: var(--page-padding);
+            text-align:center;
+        }
+        h1 {
+            font-size: 1.875rem; /* 30px */
+            margin-bottom: 1.5rem;
+            color:#000;
+        }
+
+        /* ----- Project Layout ----- */
+        .projects-container {
+            display:flex;                 /* use flexbox for easy centering */
+            flex-wrap:wrap;               /* allow wrapping to next lines */
+            gap: var(--gap-size);
+            justify-content:center;       /* centers *every* row, including the bottom one */
+            width:100%;
+            max-width: 1200px;            /* readable width cap */
+            margin: 0 auto;
+        }
+
+        /* ----- Individual Project Card ----- */
+        .project {
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:flex-start;
+            background:#fff;
+            padding:1rem;                /* inner breathing room */
+            border-radius:8px;
+            box-shadow:0 4px 8px rgba(0,0,0,0.08);
+            transition:transform 0.2s ease, box-shadow 0.2s ease;
+            width: var(--card-width);     /* fixed width keeps grid even */
+        }
+        .project:hover {
+            transform:translateY(-4px);
+            box-shadow:0 6px 12px rgba(0,0,0,0.12);
+        }
+        .project a {
+            text-decoration:none;
+            color:inherit;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            height:100%;
+        }
+
+        /* image */
+        .project img {
+            width: 100%;
+            aspect-ratio:1/1;         /* keeps them square without distortion */
+            object-fit:cover;
+            border-radius:5px;
+            margin-bottom:0.75rem;
+        }
+
+        /* headings & description */
+        .project h3 {
+            font-size:1.125rem; /* 18px */
+            margin-bottom:0.5rem;
+            color:#333;
+        }
+        .project p {
+            font-size:0.875rem; /* 14px */
+            color:#666;
+            text-align:left;
+        }
+
+        .project p:last-child {
+            margin-top:auto; /* pushes long text downward so potential buttons can align */
+        }
+
+        @media (max-width:500px){
+            :root{
+                --gap-size:20px;
+                --card-width:240px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to my CS184 <em>Computer Graphics</em> Portfolio!</h1>
+
+    <div class="projects-container">
+        <!-- Project 1 -->
+        <div class="project">
+            <a href="hw1/index.html">
+                <img src="hw1/thumbnail.jpeg" alt="Project 1 thumbnail">
+                <h3>Project 1: Rasterizer</h3>
+                <p>Implemented a vector-graphics rasterizer with triangle drawing, supersampling, hierarchical transforms, and texture mapping with antialiasing to render simplified SVGs.</p>
+            </a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project">
+            <a href="hw2/index.html">
+                <img src="hw2/thumbnail.jpeg" alt="Project 2 thumbnail">
+                <h3>Project 2: MeshEdit</h3>
+                <p>Built Bézier curves/surfaces via de Casteljau, manipulated triangle meshes using a half-edge data structure, and implemented Loop subdivision.</p>
+            </a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project">
+            <a href="hw3/index.html">
+                <img src="hw3/thumbnail.jpeg" alt="Project 3 thumbnail">
+                <h3>Project 3: PathTracer</h3>
+                <p>Developed the core of a physically-based renderer with a path-tracing algorithm, including ray-scene intersections, acceleration structures, and realistic material/lighting models.</p>
+            </a>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project">
+            <a href="hw4/index.html">
+                <img src="hw4/thumbnail.jpeg" alt="Project 4 thumbnail">
+                <h3>Project 4: ClothSimulator</h3>
+                <p>Implemented a real-time cloth simulator using a mass-spring system, handling constraints, numerical integration, collisions with external objects, and self-collision.</p>
+            </a>
+        </div>
+
+        <!-- Final Project -->
+        <div class="project">
+            <a href="finalproj-submission/index.html">
+                <img src="finalproj-submission/thumbnail.jpeg" alt="Final Project thumbnail">
+                <h3>Final Project: 3D Fluid Simulator</h3>
+                <p>Created an interactive 2D fluid simulator (CFD-based) that visualizes velocity, pressure, density, temperature, and buoyancy of the simulated medium.</p>
+            </a>
+        </div>
+    </div>
+</body>
 </html>
